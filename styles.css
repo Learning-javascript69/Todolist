@@ -8,6 +8,34 @@ body {
   padding: 20px;
   border: 1px solid #ccc;
   border-radius: 5px;
+  float:left;
+  width: 450px;
+}
+
+/* Add animation for the customization tab */
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0%);
+  }
+}
+
+.customization-tab {
+  display: none; /* Initially hide the customization tab */
+  width: 200px; /* Set the width of the customization tab */
+  background-color: #213cab; /* Background color for the customization tab */
+  padding: 20px; /* Add some padding */
+  border-radius: 5px; /* Add border radius for rounded corners */
+  position: fixed; /* Fix the position */
+  top: 0; /* Position from the top */
+  right: -100%; /* Start off-screen */
+}
+
+.customization-tab.open {
+  animation: slideIn 2s forwards; /* Apply the animation */
+  right: 0; /* Slide in from the right */
 }
 
 h1 {
