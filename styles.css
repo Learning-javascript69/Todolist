@@ -68,3 +68,11 @@ ul {
 li {
   margin-bottom: 10px;
 }
+
+.ul {
+  cursor: pointer
+}
+
+.newtask {
+  margin-top: 20px;
+}
