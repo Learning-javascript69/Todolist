@@ -12,30 +12,29 @@ body {
   width: 450px;
 }
 
-/* Add animation for the customization tab */
-@keyframes slideIn {
-  from {
-    transform: translateX(100%);
-  }
-  to {
-    transform: translateX(0%);
-  }
-}
-
 .customization-tab {
-  display: none; /* Initially hide the customization tab */
-  width: 200px; /* Set the width of the customization tab */
-  background-color: #213cab; /* Background color for the customization tab */
-  padding: 20px; /* Add some padding */
-  border-radius: 5px; /* Add border radius for rounded corners */
-  position: fixed; /* Fix the position */
-  top: 0; /* Position from the top */
-  right: -100%; /* Start off-screen */
+  /* display: none; removed */
+  
+  visibility: hidden; /* added */
+  opacity: 0; /* added */
+  transition: visibility 0.5s, opacity 0.5s linear, right 0.5s linear; /* added (animation) */
+  
+  width: 200px;
+  height: 200px;
+  background-color: #f2f2f2;
+  padding: 20px;
+  border-radius: 5px;
+  position: fixed;
+  top: 0;
+  right: -10%;
 }
 
 .customization-tab.open {
-  animation: slideIn 2s forwards; /* Apply the animation */
-  right: 0; /* Slide in from the right */
+  visibility: visible; /* added */
+  opacity: 1; /* added */
+  
+  right: 0;
+  margin-right: 15px;
 }
 
 h1 {

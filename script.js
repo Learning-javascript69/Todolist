@@ -13,17 +13,7 @@ function addTask() {
         return; // Do nothing if the input is empty or null
     }
 
-    // Create a new li element
-    var li = document.createElement("li");
-    li.textContent = taskInput.value;
 
-    li.addEventListener("click", function() {
-        // Show the customization tab
-        customizationTab.style.display = "block";
-
-        // Set the current task for editing or deleting
-        customizationTab.setAttribute("data-task", li.textContent);
-    });
 
     // Add the task to the task list
     taskList.appendChild(li);
@@ -45,13 +35,9 @@ function editTask() {
     var newTask = prompt('Enter a new name for the task:', task);
     if (newTask) {
         customizationTab.classList.add("open"); // Open customization tab
-        var taskList = document.getElementById("taskList");
-        var tasks = taskList.getElementsByTagName("li");
+        var tasks = document.getElementsByClassName("targetElement"); // Find all tasks with class
         for (var i = 0; i < tasks.length; i++) {
-            if (tasks[i].textContent === task) {
-                tasks[i].textContent = newTask;
-                break;
-            }
+            tasks[i].textContent = newTask; // Update task content
         }
     }
 }
@@ -72,3 +58,11 @@ function deleteTask() {
 function hideSideBar() {
     customizationTab.style.display = "none";
 }
+
+function showCustomization() {
+    document.querySelector('.customization-tab').classList.add('open');
+  }
+  
+function hideCustomization() {
+        document.querySelector('.customization-tab').classList.remove('open');
+  }
