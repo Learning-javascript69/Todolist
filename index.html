@@ -3,22 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>To-Do List</title>
+    <title id="siteTitle">To-Do List</title>
     <link rel="stylesheet" href="styles.css">
+
+</head>
+<body>
+
     <style>
         .wip{
             font-size:500%
         }
     </style>
-</head>
-<body>
+  
     <p class="wip">WORK IN PROGRESS, DOESN'T WORK YET</p>
     <button onclick="newName()">New name</button>
+  
     <div class="container">
-        <h1>To-Do List</h1>
-        <input type="text" id="taskInput" placeholder="Add new task">
+        <h1 id="listTitle">To-Do List</h1>
+        <button onclick="newNameList()">Rename tasklist</button>
+        <input type="text" id="taskInput" placeholder="Add new task" class="newtask">
         <button onclick="addTask()">Add Task</button>
-        <ul id="taskList"></ul>
+        <ul id="taskList" class="ul"></ul>
+    </div>
+
+    <div class="customization-tab" id="customizationTab">
+        <button onclick="hideCustomization()">Hide Bar</button>
+        <button onclick="editTask()">Edit Task</button>
+        <button onclick="deleteTask()">Delete Task</button>
     </div>
 
     <script src="script.js"></script>

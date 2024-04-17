@@ -1,48 +1,73 @@
-var listTitle = "My To-Do List"; // Define the title as a variable
+var listTitle = "To-Do List"; // Define the title as a variable
+var customizationTab = document.getElementById("customizationTab");
+let siteTitle = 'To-Do List'
 
-        // Set the title of the to-do list
+// Set the title of the to-do list
+document.getElementById("listTitle").textContent = listTitle;
+
+// Remove the event listener from the task items
+
+function addTask() {
+  var taskInput = document.getElementById("taskInput");
+  var taskList = document.getElementById("taskList");
+
+  // Check if the input field is empty or null
+  if (!taskInput.value || taskInput.value.trim() === "") {
+      return; // Do nothing if the input is empty or null
+  }
+
+  var li = document.createElement("li");
+  li.textContent = taskInput.value;
+
+  // Add the task to the task list
+  taskList.appendChild(li);
+
+  // Clear the input field
+  taskInput.value = "";
+}
+
+function editTask() {
+  var taskToEdit = prompt('Enter the new name for this task:');
+  if (taskToEdit !== null) {
+      var taskInput = document.getElementById("taskInput");
+      taskInput.value = taskToEdit;
+  }
+}
+
+
+function newNameList() {
+    let newName = prompt('What is the new name of your to-do list');
+    if (newName) {
+        listTitle = newName;
+        siteTitle = newName
         document.getElementById("listTitle").textContent = listTitle;
+        document.getElementById('siteTitle').textContent = siteTitle
+    }
+}
 
-        function addTask() {
-            var taskInput = document.getElementById("taskInput");
-            var taskList = document.getElementById("taskList");
-
-            // Check if the input field is empty or null
-            if (!taskInput.value || taskInput.value.trim() === "") {
-                return; // Do nothing if the input is empty or null
-            }
-
-            // Create a new li element
-            var li = document.createElement("li");
-            li.textContent = taskInput.value;
-
-            // Add a delete button to the task
-            var deleteButton = document.createElement("button");
-            deleteButton.textContent = "❌";
-            deleteButton.onclick = function() {
-                taskList.removeChild(li);
-            };
-
-            // Add an edit button to the task
-            var editButton = document.createElement("button");
-            editButton.textContent = "✎";
-            editButton.onclick = function() {
-                var newText = prompt("Enter the new text for the task:", li.textContent);
-                if (newText !== null && newText.trim() !== "") {
-                    li.textContent = newText;
-                }
-            };
-
-            li.appendChild(deleteButton);
-            li.appendChild(editButton);
-
-            // Add the task to the task list
-            taskList.appendChild(li);
-
-            // Clear the input field
-            taskInput.value = "";
+function deleteTask() {
+    var task = customizationTab.getAttribute("data-task");
+    customizationTab.style.display = "none"; // Hide customization tab
+    var taskList = document.getElementById("taskList");
+    var tasks = taskList.getElementsByTagName("li");
+    for (var i = 0; i < tasks.length; i++) {
+        if (tasks[i].textContent === task) {
+            taskList.removeChild(tasks[i]);
+            break;
         }
-        function newName(){
-          listtitle = prompt('What is the new name of your to-do list')
-          document.getElementById("listTitle").textContent = listTitle;
-        }
+    }
+}
+
+function showCustomization() {
+  var customizationTab = document.querySelector('.customization-tab');
+  customizationTab.style.visibility = 'visible';
+  customizationTab.style.opacity = 1;
+  customizationTab.style.right = 0;
+}
+
+function hideCustomization() {
+  var customizationTab = document.querySelector('.customization-tab');
+  customizationTab.style.visibility = 'hidden';
+  customizationTab.style.opacity = 0;
+  customizationTab.style.right = '-10%'; // Adjust this value based on your sidebar width
+}
