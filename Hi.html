@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dynamic Event Listener Example</title>
+</head>
+<body>
+
+<h2>Add Items</h2>
+<input type="text" id="itemInput">
+<button onclick="addItem()">Add Item</button>
+
+<h2>Items</h2>
+<ul id="itemList">
+  <!-- List items will be added here -->
+</ul>
+
+<script>
+  // Function to add an item to the list
+  function addItem() {
+    var input = document.getElementById("itemInput").value;
+    var list = document.getElementById("itemList");
+    
+    // Create a new list item
+    var listItem = document.createElement("li");
+    listItem.textContent = input;
+    
+    // Add an event listener to the new list item
+    listItem.addEventListener("click", function() {
+      // Replace this with your own function output
+      alert("You clicked on: " + input);
+    });
+    
+    // Append the new list item to the list
+    list.appendChild(listItem);
+    
+    // Clear the input field
+    document.getElementById("itemInput").value = "";
+  }
+</script>
+
+</body>
+</html>
