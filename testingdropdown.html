@@ -11,12 +11,6 @@
 
         .dropdown-menu {
             display: none;
-            position: absolute;
-            top: 100%;
-            left: 0;
-            background-color: #fff;
-            padding: 5px;
-            border: 1px solid #ccc;
         }
 
         .show {
@@ -25,26 +19,22 @@
     </style>
 </head>
 <body>
-    <ul>
-        <li>
-            Task 1
-            <span class="dropdown-arrow">&#9660;</span>
-            <ul class="dropdown-menu">
-                <li>Action 1</li>
-                <li>Action 2</li>
-                <li>Action 3</li>
-            </ul>
-        </li>
-        <li>
-            Task 2
-            <span class="dropdown-arrow">&#9660;</span>
-            <ul class="dropdown-menu">
-                <li>Action 1</li>
-                <li>Action 2</li>
-                <li>Action 3</li>
-            </ul>
-        </li>
-    </ul>
+    <div>
+        Task 1 <span class="dropdown-arrow">&#9660;</span>
+        <ul class="dropdown-menu">
+            <li>Action 1</li>
+            <li>Action 2</li>
+            <li>Action 3</li>
+        </ul>
+    </div>
+    <div>
+        Task 2 <span class="dropdown-arrow">&#9660;</span>
+        <ul class="dropdown-menu">
+            <li>Action 1</li>
+            <li>Action 2</li>
+            <li>Action 3</li>
+        </ul>
+    </div>
 
     <script>
         document.addEventListener("DOMContentLoaded", function() {
