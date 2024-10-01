@@ -9,6 +9,23 @@ function TodoList() {
   const [editingTodoId, setEditingTodoId] = useState(null); // Keeps track of which todo is being edited
   const [newTodoText, setNewTodoText] = useState(''); // Holds the text for the edited todo
   const [newTodo, setNewTodo] = useState('');
+  const [isEditing, setIsEditing] = useState(false); // Manages whether you're in edit mode
+  const [editId, setEditId] = useState(null); // Stores the ID of the todo being edited
+
+  const handleEditClick = (id) => {
+    const todoToEdit = todos.find((todo) => todo._id === id);
+    if (!todoToEdit) {
+      console.error("Todo not found for ID:", id);
+      return;
+    }
+    console.log("Editing Todo:", todoToEdit);  // Check if the correct todo is being edited
+    setNewTodoText(todoToEdit.text);  // Set the text to the input
+    setIsEditing(true);  // Change to editing state
+    setEditId(id);  // Store the ID of the todo being edited
+  };
+  
+  
+  
 
   // Fetch todos when component mounts
   useEffect(() => {
@@ -67,10 +84,6 @@ function TodoList() {
       console.error('Error updating todo:', error);
       alert('Failed to update todo. Please try again.');
     };
-    const handleEditClick = (todo) => {
-      setEditingTodoId(todo._id);
-      setNewTodoText(todo.text); // Set current todo text in input field
-    };
   }
   
     const handleEditSave = async (id) => {
@@ -116,13 +129,11 @@ function TodoList() {
                 value={newTodoText}
                 onChange={(e) => setNewTodoText(e.target.value)}
               />
-            ) : (
-              <span>{todo.text}</span>
             )}
             {editingTodoId === todo._id ? (
               <button onClick={() => handleEditSave(todo._id)}>Save</button>
             ) : (
-              <button onClick={() => handleEditClick(todo)}>Edit</button>
+              <button onClick={() => handleEditClick(todo._id)}>Edit</button>
             )}
             <button onClick={() => deleteTodo(todo._id)} className="delete-button">Delete</button>
           </li>
