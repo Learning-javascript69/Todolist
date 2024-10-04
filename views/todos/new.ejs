@@ -1,0 +1,13 @@
+<%- include('../partials/header') %>
+
+<h2>Add New To-Do</h2>
+
+<form action="/todos" method="POST" class="form">
+    <div class="form-group">
+        <label for="text">To-Do:</label>
+        <input type="text" id="text" name="text" required>
+    </div>
+    <button type="submit" class="btn submit-btn">Add To-Do</button>
+</form>
+
+<%- include('../partials/footer') %>
